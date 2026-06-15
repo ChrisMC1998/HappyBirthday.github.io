@@ -442,8 +442,12 @@
             /* Hide massive side balloons so they don't crush the text */
             .side-hearts { display: none !important; }
             
-            /* Shrink Hero image and text so it fits the screen */
-            .glowing-heart-container { width: 250px; height: 250px; margin-top: 80px; }
+            /* Shrink Hero image using scale so the custom heart path doesn't get chopped off */
+            .glowing-heart-container { 
+                transform: scale(0.75); 
+                margin-top: 40px; 
+                margin-bottom: -30px; 
+            }
             .hero-title { font-size: 2.2rem; }
             .hero-name { font-size: 3.5rem; }
             .hero-subtitle { font-size: 3rem; margin-top: 0; }
@@ -728,8 +732,9 @@
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Add text to the scratch layer
-            ctx.font = "bold 40px 'Playfair Display'";
+            // Add text to the scratch layer - dynamically sized for mobile
+            let fontSize = canvas.width < 400 ? "bold 26px 'Playfair Display'" : "bold 40px 'Playfair Display'";
+            ctx.font = fontSize;
             ctx.fillStyle = "#5c4314";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
