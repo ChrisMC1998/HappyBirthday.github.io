@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Peaches</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+
+/* --- Hero Side Hearts (DENSE BALLOON STACKS) --- */
+        .side-hearts {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px; /* Wider container for a thicker bunch */
+            height: 75vh; 
+            z-index: 0;
+        }
+
+        .side-hearts.left { left: 10px; }
+        .side-hearts.right { right: 10px; }
+
+        .side-hearts span {
+            position: absolute;
+            animation: gentlePulse 4s infinite ease-in-out;
+        }
+
+        /* Deeper shadows to make them look like they are physically overlapping */
+        .pink-heart { color: var(--glow-pink); text-shadow: -3px 6px 12px rgba(0,0,0,0.6); } 
+        .white-heart { color: #ffffff; text-shadow: -2px 4px 8px rgba(0,0,0,0.5); filter: drop-shadow(0 0 5px rgba(255, 77, 133, 0.5)); } 
+
+        /* MASSIVE LEFT CLUSTER: 20 overlapping hearts */
+        .side-hearts.left span:nth-child(1) { top: -2%; left: 0%; font-size: 4rem; transform: rotate(-10deg); z-index: 3; }
+        .side-hearts.left span:nth-child(2) { top: 3%; left: 40%; font-size: 2.5rem; transform: rotate(15deg); z-index: 1; }
+        .side-hearts.left span:nth-child(3) { top: 8%; left: -10%; font-size: 5.5rem; transform: rotate(-5deg); z-index: 5; }
+        .side-hearts.left span:nth-child(4) { top: 13%; left: 35%; font-size: 3.5rem; transform: rotate(25deg); z-index: 2; }
+        .side-hearts.left span:nth-child(5) { top: 18%; left: 10%; font-size: 4.5rem; transform: rotate(-15deg); z-index: 4; }
+        .side-hearts.left span:nth-child(6) { top: 22%; left: -5%; font-size: 6rem; transform: rotate(-20deg); z-index: 6; }
+        .side-hearts.left span:nth-child(7) { top: 28%; left: 45%; font-size: 3rem; transform: rotate(10deg); z-index: 2; }
+        .side-hearts.left span:nth-child(8) { top: 33%; left: 5%; font-size: 5rem; transform: rotate(5deg); z-index: 5; }
+        .side-hearts.left span:nth-child(9) { top: 38%; left: -15%; font-size: 4rem; transform: rotate(-25deg); z-index: 3; }
+        .side-hearts.left span:nth-child(10) { top: 43%; left: 30%; font-size: 6.5rem; transform: rotate(15deg); z-index: 7; }
+        .side-hearts.left span:nth-child(11) { top: 48%; left: -5%; font-size: 3.5rem; transform: rotate(-10deg); z-index: 4; }
+        .side-hearts.left span:nth-child(12) { top: 53%; left: 40%; font-size: 5rem; transform: rotate(20deg); z-index: 6; }
+        .side-hearts.left span:nth-child(13) { top: 58%; left: 10%; font-size: 4.5rem; transform: rotate(-5deg); z-index: 5; }
+        .side-hearts.left span:nth-child(14) { top: 63%; left: -10%; font-size: 6rem; transform: rotate(-15deg); z-index: 8; }
+        .side-hearts.left span:nth-child(15) { top: 68%; left: 35%; font-size: 3rem; transform: rotate(25deg); z-index: 3; }
+        .side-hearts.left span:nth-child(16) { top: 73%; left: 0%; font-size: 5.5rem; transform: rotate(-20deg); z-index: 6; }
+        .side-hearts.left span:nth-child(17) { top: 78%; left: -15%; font-size: 4rem; transform: rotate(-5deg); z-index: 4; }
+        .side-hearts.left span:nth-child(18) { top: 83%; left: 45%; font-size: 2.5rem; transform: rotate(15deg); z-index: 2; }
+        .side-hearts.left span:nth-child(19) { top: 88%; left: 5%; font-size: 6.5rem; transform: rotate(5deg); z-index: 7; }
+        .side-hearts.left span:nth-child(20) { top: 95%; left: 25%; font-size: 3.5rem; transform: rotate(-10deg); z-index: 5; }
+
+        /* MASSIVE RIGHT CLUSTER: Mirrored tight overlap */
+        .side-hearts.right span:nth-child(1) { top: -2%; right: 0%; font-size: 4rem; transform: rotate(10deg); z-index: 3; }
+        .side-hearts.right span:nth-child(2) { top: 3%; right: 40%; font-size: 2.5rem; transform: rotate(-15deg); z-index: 1; }
+        .side-hearts.right span:nth-child(3) { top: 8%; right: -10%; font-size: 5.5rem; transform: rotate(5deg); z-index: 5; }
+        .side-hearts.right span:nth-child(4) { top: 13%; right: 35%; font-size: 3.5rem; transform: rotate(-25deg); z-index: 2; }
+        .side-hearts.right span:nth-child(5) { top: 18%; right: 10%; font-size: 4.5rem; transform: rotate(15deg); z-index: 4; }
+        .side-hearts.right span:nth-child(6) { top: 22%; right: -5%; font-size: 6rem; transform: rotate(20deg); z-index: 6; }
+        .side-hearts.right span:nth-child(7) { top: 28%; right: 45%; font-size: 3rem; transform: rotate(-10deg); z-index: 2; }
+        .side-hearts.right span:nth-child(8) { top: 33%; right: 5%; font-size: 5rem; transform: rotate(-5deg); z-index: 5; }
+        .side-hearts.right span:nth-child(9) { top: 38%; right: -15%; font-size: 4rem; transform: rotate(25deg); z-index: 3; }
+        .side-hearts.right span:nth-child(10) { top: 43%; right: 30%; font-size: 6.5rem; transform: rotate(-15deg); z-index: 7; }
+        .side-hearts.right span:nth-child(11) { top: 48%; right: -5%; font-size: 3.5rem; transform: rotate(10deg); z-index: 4; }
+        .side-hearts.right span:nth-child(12) { top: 53%; right: 40%; font-size: 5rem; transform: rotate(-20deg); z-index: 6; }
+        .side-hearts.right span:nth-child(13) { top: 58%; right: 10%; font-size: 4.5rem; transform: rotate(5deg); z-index: 5; }
+        .side-hearts.right span:nth-child(14) { top: 63%; right: -10%; font-size: 6rem; transform: rotate(15deg); z-index: 8; }
+        .side-hearts.right span:nth-child(15) { top: 68%; right: 35%; font-size: 3rem; transform: rotate(-25deg); z-index: 3; }
+        .side-hearts.right span:nth-child(16) { top: 73%; right: 0%; font-size: 5.5rem; transform: rotate(20deg); z-index: 6; }
+        .side-hearts.right span:nth-child(17) { top: 78%; right: -15%; font-size: 4rem; transform: rotate(5deg); z-index: 4; }
+        .side-hearts.right span:nth-child(18) { top: 83%; right: 45%; font-size: 2.5rem; transform: rotate(-15deg); z-index: 2; }
+        .side-hearts.right span:nth-child(19) { top: 88%; right: 5%; font-size: 6.5rem; transform: rotate(-5deg); z-index: 7; }
+        .side-hearts.right span:nth-child(20) { top: 95%; right: 25%; font-size: 3.5rem; transform: rotate(10deg); z-index: 5; }
+
+        /* Staggered glow animation */
+        .side-hearts span:nth-child(even) { animation-delay: 1.5s; }
+        .side-hearts span:nth-child(3n) { animation-delay: 3s; }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+@media (max-width: 768px) {
+            /* ... other mobile rules remain ... */
+            
+            .quote-box {
+                text-align: center;
+                margin-bottom: 40px;
+                padding: 30px; /* Resets the massive right-padding for phones */
+            }
+            .polaroid-card {
+                position: relative;
+                right: auto;
+                top: auto; /* Ensure we reset the top anchor for mobile */
+                margin: 40px auto 0;
+                transform: rotate(3deg);
+            }
+        }
+
+        /* --- CSS STYLES --- */
+        :root {
+            --bg-dark: #0f050d;
+            --text-light: #fbe5ed;
+            --glow-pink: #ff4d85;
+            --accent-gold: #e2a969;
+            --font-serif: 'Playfair Display', serif;
+            --font-cursive: 'Great Vibes', cursive;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at center, #2a0b25 0%, #0f050d 100%);
+            background-attachment: fixed;
+        }
+
+        /* Animated Particles */
+        #particle-container {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+            animation: floatUp linear infinite;
+            /* Applies a soft, premium glow around the heart shape */
+            filter: drop-shadow(0 0 8px rgba(255, 77, 133, 0.8));
+        }
+
+        .particle svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--glow-pink);
+        }
+
+        @keyframes floatUp {
+            /* Adds a gentle sway/rotation as they float */
+            0% { transform: translateY(100vh) scale(0.5) rotate(-15deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.2) rotate(15deg); opacity: 0; }
+        }
+
+        /* Typography & Utilities */
+        .serif { font-family: var(--font-serif); }
+        .cursive { font-family: var(--font-cursive); color: var(--glow-pink); }
+        .accent { color: var(--accent-gold); }
+        .text-center { text-align: center; }
+        
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+       
+        /* Top Nav */
+        .top-nav {
+            position: absolute; top: 0; left: 0; width: 100%;
+            display: flex; justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px; z-index: 10;
+        }
+
+        .nav-brand {
+            font-family: var(--font-cursive);
+            font-size: 2.2rem;
+            color: #ffffff; /* White text for contrast */
+            -webkit-text-stroke: 1px #000000; /* Black outline for readability */
+            text-shadow: 0 0 15px var(--glow-pink); /* Soft pink glow behind it */
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 2px;
+        }
+
+        .nav-brand::before, .nav-brand::after {
+            content: '✨';
+            font-size: 1.2rem;
+            -webkit-text-stroke: 0; /* Keeps the stars looking normal */
+            filter: drop-shadow(0 0 5px var(--accent-gold));
+        }
+
+        .music-toggle {
+            background: rgba(255, 77, 133, 0.1);
+            border: 1px solid var(--glow-pink);
+            color: var(--text-light);
+            padding: 8px 18px 8px 8px; /* Extra padding on right, less on left for the icon */
+            border-radius: 40px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 77, 133, 0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .music-toggle:hover {
+            background: rgba(255, 77, 133, 0.25);
+            box-shadow: 0 0 20px rgba(255, 77, 133, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .music-icon-bg {
+            background: var(--glow-pink);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        }
+
+        /* --- SECTION 01: Hero --- */
+        #hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+
+        .glowing-heart-container {
+            width: 350px; height: 350px;
+            position: relative; margin-bottom: 30px;
+            filter: drop-shadow(0 0 30px rgba(255, 77, 133, 0.8));
+        }
+
+        .glowing-heart-container::before {
+            content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background: var(--glow-pink);
+            clip-path: path('M175 320.5C175 320.5 35 210.5 35 116.5C35 63.5 77.5 22.5 125 22.5C153.5 22.5 175 42.5 175 42.5C175 42.5 196.5 22.5 225 22.5C272.5 22.5 315 63.5 315 116.5C315 210.5 175 320.5 175 320.5Z');
+            z-index: -1;
+        }
+
+        .heart-image {
+            width: 100%; height: 100%; object-fit: cover;
+            clip-path: path('M175 320.5C175 320.5 35 210.5 35 116.5C35 63.5 77.5 22.5 125 22.5C153.5 22.5 175 42.5 175 42.5C175 42.5 196.5 22.5 225 22.5C272.5 22.5 315 63.5 315 116.5C315 210.5 175 320.5 175 320.5Z');
+        }
+
+        .hero-title { font-size: 3rem; font-weight: 400; }
+        .hero-name {
+            font-size: 5rem; font-weight: 600; letter-spacing: 5px;
+            color: transparent; -webkit-text-stroke: 1px var(--glow-pink);
+            text-shadow: 0 0 20px rgba(255, 77, 133, 0.6);
+            margin: -10px 0; font-family: var(--font-serif);
+        }
+        .hero-subtitle { font-size: 4rem; margin-top: -15px; }
+
+        .divider-text { margin: 40px 0; line-height: 2; font-size: 1.1rem; color: #eed5df; }
+        .tiny-heart { display: block; color: var(--glow-pink); font-size: 1rem; margin: 10px 0; }
+
+        .glow-btn {
+            background: transparent; border: 2px solid var(--glow-pink);
+            color: var(--text-light); padding: 15px 40px;
+            border-radius: 40px; font-family: var(--font-serif); font-size: 1.3rem;
+            cursor: pointer; transition: 0.3s;
+            box-shadow: 0 0 20px rgba(255, 77, 133, 0.4), inset 0 0 10px rgba(255, 77, 133, 0.4);
+        }
+        .glow-btn:hover {
+            background: rgba(255, 77, 133, 0.2);
+            box-shadow: 0 0 30px rgba(255, 77, 133, 0.8), inset 0 0 20px rgba(255, 77, 133, 0.8);
+        }
+
+        /* Section Headers */
+        .badge {
+            display: inline-block; border: 1px solid var(--accent-gold);
+            color: var(--accent-gold); padding: 5px 20px; border-radius: 20px;
+            font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(226, 169, 105, 0.3);
+        }
+        .section-title { font-size: 4rem; margin-bottom: 10px; }
+        .section-desc { font-size: 1.1rem; color: #eed5df; margin-bottom: 60px; line-height: 1.6; }
+
+        /* --- SECTION 02: Journey Timeline --- */
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; left: 50px; top: 0; bottom: 0;
+            width: 2px; background: rgba(226, 169, 105, 0.3);
+        }
+        .timeline-item {
+            display: flex; align-items: center; margin-bottom: 80px;
+            position: relative; padding-left: 120px; gap: 40px;
+        }
+        .circle-number {
+            position: absolute; left: 25px; width: 50px; height: 50px;
+            background: var(--bg-dark); border: 2px solid var(--accent-gold);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-serif); color: var(--accent-gold); font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(226, 169, 105, 0.5); z-index: 2;
+        }
+        .journey-text { flex: 1; }
+        .journey-text h3 { font-size: 2.5rem; margin-bottom: 15px; }
+        .journey-text p { font-size: 1.1rem; line-height: 1.8; color: #eed5df; }
+        .journey-img {
+            flex: 1.5; height: 300px; border-radius: 15px;
+            border: 1px solid rgba(226, 169, 105, 0.5); overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .journey-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- SECTION 04: What I Love --- */
+        .grid-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px; margin-top: 40px;
+        }
+        .grid-item {
+            border: 1px solid rgba(226, 169, 105, 0.3); border-radius: 15px;
+            padding: 30px 20px; text-align: center;
+            background: rgba(20, 5, 15, 0.5);
+            box-shadow: 0 5px 20px rgba(226, 169, 105, 0.1);
+            transition: transform 0.3s;
+        }
+        .grid-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(226, 169, 105, 0.3); }
+        .grid-icon {
+            font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(226, 169, 105, 0.5);
+        }
+        .grid-item h4 { font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; margin-bottom: 10px; }
+        .grid-item hr { border: 0; border-top: 1px solid rgba(226,169,105,0.3); width: 30px; margin: 10px auto; }
+        .grid-item p { font-size: 0.9rem; color: #eed5df; line-height: 1.6; }
+
+        .quote-box {
+            margin: 120px auto 100px; /* Pushes the whole box down so it stays away from the grid */
+            max-width: 800px; /* Made slightly wider */
+            border: 1px solid rgba(226, 169, 105, 0.4); 
+            /* Top padding, massive right padding (250px), bottom padding, left padding */
+            padding: 40px 250px 40px 40px; 
+            border-radius: 15px; 
+            font-family: var(--font-serif); 
+            font-size: 1.6rem;
+            font-style: italic; 
+            color: var(--accent-gold); 
+            position: relative;
+            text-align: left; 
+            box-shadow: 0 0 20px rgba(226, 169, 105, 0.1);
+        }
+
+        /* --- NEW POLAROID STYLES --- */
+        .polaroid-card {
+            position: absolute;
+            right: -20px; /* Keeps it closer to the edge so it doesn't break screens */
+            top: -50px; /* Anchors it to the top so it hangs down, instead of shooting up */
+            width: 250px; /* Slightly narrower to fit perfectly */
+            background: #e8dcc6; 
+            padding: 15px 15px 25px 15px;
+            border-radius: 3px;
+            box-shadow: 10px 15px 30px rgba(0,0,0,0.8);
+            transform: rotate(8deg); 
+            z-index: 5;
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 220px; /* Restricts the photo height so it doesn't get too massive */
+            object-fit: cover;
+            border-radius: 2px;
+            filter: sepia(20%) contrast(110%); 
+        }
+
+        .polaroid-text {
+            font-family: var(--font-cursive);
+            color: #3e2723;
+            font-size: 1.3rem;
+            margin-top: 15px;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .tape {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 90px;
+            height: 30px;
+            background: rgba(200, 180, 140, 0.7); /* Semi-transparent masking tape */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            z-index: 6;
+        }
+
+        /* --- SECTION 05: A Letter --- */
+        .letter-layout {
+            display: flex; gap: 50px; align-items: flex-start; justify-content: center;
+            margin-top: 50px;
+        }
+        .letter-paper {
+            flex: 1; max-width: 500px; background: #e8dcc6; /* Parchment color */
+            color: #3e2723; padding: 50px 40px; border-radius: 5px;
+            box-shadow: 5px 10px 30px rgba(0,0,0,0.8);
+            font-family: 'Great Vibes', cursive; font-size: 1.8rem; line-height: 1.6;
+            position: relative; transform: rotate(-2deg);
+        }
+        .letter-paper p { margin-bottom: 20px; }
+        .letter-paper .signoff { text-align: right; margin-top: 40px; font-size: 2.2rem; }
+        
+        .photo-collage { flex: 1; display: grid; gap: 15px; grid-template-columns: 1fr 1fr; }
+        .collage-img {
+            width: 100%; height: 200px; object-fit: cover; border-radius: 5px;
+            border: 5px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        .collage-img:nth-child(even) { transform: rotate(3deg); }
+        .collage-img:nth-child(odd) { transform: rotate(-3deg); }
+
+        /* --- SECTION 06: Scratch Card --- */
+        .scratch-container {
+            position: relative; width: 600px; max-width: 100%; height: 350px;
+            margin: 40px auto; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(226, 169, 105, 0.4);
+            border: 2px solid var(--accent-gold);
+        }
+        
+        /* The Prize underneath */
+        .scratch-prize {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #1a0510; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; z-index: 1;
+        }
+        .scratch-prize h3 { font-family: var(--font-cursive); font-size: 4rem; color: var(--glow-pink); margin-bottom: 10px;}
+        .scratch-prize p { font-size: 1.2rem; margin-bottom: 20px; }
+
+        /* The Canvas Overlay */
+        #scratch-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2; cursor: pointer;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-name { font-size: 3.5rem; }
+            .timeline-item { flex-direction: column; padding-left: 0; text-align: center; }
+            .timeline::before { display: none; }
+            .circle-number { position: relative; left: 0; margin: 0 auto 20px; }
+            .journey-img { width: 100%; }
+            .letter-layout { flex-direction: column; align-items: center; }
+            .letter-paper { transform: none; width: 100%; padding: 30px 20px; }
+            .scratch-container { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+<audio id="birthday-song" src="song.mp3" loop></audio>
+
+    <div id="particle-container"></div>
+
+    <nav class="top-nav">
+        <div class="nav-brand">For My Peaches 🤍</div>
+        <button id="music-btn" class="music-toggle" onclick="toggleMusic()">
+            <span class="music-icon-bg">🎵</span>
+            <span id="music-text">Play Song</span>
+        </button>
+    </nav>
+
+    <section id="hero">
+        
+        <div class="side-hearts left">
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+        </div>
+        <div class="side-hearts right">
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+            <span class="pink-heart">♥</span><span class="pink-heart">♥</span><span class="white-heart">♡</span><span class="pink-heart">♥</span><span class="white-heart">♡</span>
+        </div>
+
+        <div class="glowing-heart-container">
+            <img src="hero-pic.jpg" alt="Poorvi and Chris" class="heart-image">
+        </div>
+        
+        <div class="text-center">
+            <h1 class="serif hero-title">Happy Birthday,</h1>
+            <h2 class="hero-name">POORVI</h2>
+            <h3 class="cursive hero-subtitle">my Peaches ♡</h3>
+            
+            <div class="divider-text">
+                Two years ago, my life changed forever.
+                <span class="tiny-heart">♥</span>
+                Thank you for every smile, every laugh,<br>every moment.
+                <span class="tiny-heart">♥</span>
+                This little website is my gift to you.
+                <span class="tiny-heart">♥</span>
+                So, are you ready to walk down<br>our memory lane?
+            </div>
+
+            <button class="glow-btn" onclick="document.getElementById('journey').scrollIntoView({behavior: 'smooth'})">Begin Our Story ✨</button>
+        </div>
+    </section>
+
+    <section id="journey" class="text-center">
+        
+        <h2 class="serif section-title">Our <span class="cursive">Journey</span></h2>
+        <p class="section-desc">A timeline of us and the beautiful<br>memories we created together.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="circle-number">01</div>
+                <div class="journey-text" style="text-align: left;">
+                    <h3 class="cursive accent">Where it all began ♡</h3>
+                    <p>Before all the memories, before all the trips, before all the celebrations... <br><strong class="accent">there was us.</strong></p>
+                </div>
+                <div class="journey-img">
+                    <img src="memory1.jpg" alt="Memory 1">
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="circle-number">02</div>
+                <div class="journey-text" style="text-align: left;">
+                    <h3 class="cursive accent">Simple days, perfect memories ♡</h3>
+                    <p>We never needed expensive places. Somehow every place felt special, <br><strong class="accent">because you were there.</strong></p>
+                </div>
+                <div class="journey-img">
+                    <img src="memory2.jpg" alt="Memory 2">
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="circle-number">03</div>
+                <div class="journey-text" style="text-align: left;">
+                    <h3 class="cursive accent">You + Me = My Happy Place ♡</h3>
+                    <p>People ask what happiness looks like.<br>This photo is <br><strong class="accent">my answer.</strong></p>
+                </div>
+                <div class="journey-img">
+                    <img src="memory3.jpg" alt="Memory 3">
+                </div>
+            </div>
+        </div>
+        
+        <h3 class="cursive accent" style="font-size: 3rem; margin-top: 50px;">Let's keep creating them together ♡</h3>
+        
+
+    <section id="reasons" class="text-center">
+        
+        <h2 class="serif section-title">What I Love</h2>
+        <h2 class="cursive" style="font-size: 5rem; margin-top: -30px;">About You</h2>
+        <p class="section-desc">There are a million reasons to love you,<br>but here are some of my favorites.</p>
+
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="grid-icon">🤍</div>
+                <h4>Your Kindness</h4><hr>
+                <p>The way you care for everyone around you shows how beautiful your heart is.</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">⭐</div>
+                <h4>Your Smile</h4><hr>
+                <p>Your smile can turn my worst day into the best one.</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">♾️</div>
+                <h4>Your Loyalty</h4><hr>
+                <p>Your loyalty and devotion make me feel the luckiest person alive.</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🤝</div>
+                <h4>Your Support</h4><hr>
+                <p>You've always been my biggest support system. I can always count on you.</p>
+            </div>
+
+            <!-- NEW CARD 1: Your Beauty -->
+            <div class="grid-item">
+                <div class="grid-icon">🌸</div>
+                <h4>Your Beauty</h4><hr>
+                <p>Not just your looks, but your soul, your heart and your personality.</p>
+            </div>
+
+            <!-- NEW CARD 2: You & Me -->
+            <div class="grid-item">
+                <div class="grid-icon">♡</div>
+                <h4>You & Me</h4><hr>
+                <p>We are just better together. That's my favorite truth.</p>
+            </div>
+            
+        </div> <!-- This is the closing div for the grid-container -->
+
+        <div class="quote-box">
+            "You are the best part of my life, Poorvi.<br>I love you more than words can ever say." ♡
+            
+            <!-- NEW POLAROID CARD -->
+            <div class="polaroid-card">
+                <div class="tape"></div>
+                <!-- REPLACE SRC WITH YOUR PHOTO -->
+                <img src="polaroid.jpg" alt="Us" class="polaroid-img">
+                <div class="polaroid-text">
+                    Thank you for<br>being you,<br>
+                    <span style="font-size: 1.8rem; font-weight: bold;">My Peaches ♡</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="letter" class="text-center">
+        
+        <h2 class="serif section-title">A Letter For You</h2>
+        <p class="section-desc">Straight from my heart, just for you.</p>
+
+        <div class="letter-layout">
+            <div class="letter-paper" style="text-align: left;">
+                <p>Dear Poorvi, ♡</p>
+                <p>I don't know what I did to deserve someone as caring, loving and beautiful as you.</p>
+                <p>Thank you for standing beside me through everything. Through my good days and my bad days, through my overthinking, my mood swings, my silences, my everything.</p>
+                <p>Thank you for believing in me even when I doubted myself.</p>
+                <p>These last two years have been some of the happiest years of my life. And the best part is... I know this is just the beginning.</p>
+                <p style="color: #ff4d85; font-weight: bold;">Happy Birthday, my Peaches. ♡</p>
+                <p class="signoff">Forever yours,<br>Chris ♡</p>
+            </div>
+
+            <div class="photo-collage">
+                <img src="Letter1.jpg" class="collage-img" alt="Collage">
+                <img src="Letter2.jpg" class="collage-img" alt="Collage">
+                <img src="Letter3.jpg" class="collage-img" alt="Collage">
+                <img src="Letter4.jpg" class="collage-img" alt="Collage">
+            </div>
+        </div>
+
+    </section>
+
+    <section id="surprise" class="text-center">
+        
+        <h2 class="serif section-title">One Last Surprise,</h2>
+        <h2 class="cursive" style="font-size: 5rem; margin-top: -30px;">Peaches ♡</h2>
+        <p class="section-desc">Before you reach the end,<br>I have one small surprise waiting for you.</p>
+
+        <div class="scratch-container">
+            <div class="scratch-prize">
+                <h3>Surprise!</h3>
+                <p>Your Special Gift Awaits You</p>
+                <button class="glow-btn" onclick="https://www.amazon.in/g/NR7N89BN3BVFENBV?ref=gc_yo, '_blank')">Open Your Gift 🎁</button>
+            </div>
+            
+            <canvas id="scratch-canvas"></canvas>
+        </div>
+        
+        <p class="cursive" style="font-size: 2rem; margin-top: 20px;">Use your mouse or finger to scratch ↗</p>
+</section>
+
+    <script>
+        // 1. GENERATE FLOATING HEART PARTICLES
+        function createParticles() {
+            const container = document.getElementById('particle-container');
+            
+            // The premium SVG Heart graphic
+            const heartSVG = `<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+
+            for (let i = 0; i < 40; i++) { // Slightly reduced count to prevent clutter
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.innerHTML = heartSVG; // Injects the heart into the div
+                
+                // Increased size so the hearts are beautifully visible (8px to 25px)
+                const size = Math.random() * 17 + 8; 
+                const leftPos = Math.random() * 100; 
+                const duration = Math.random() * 15 + 10; 
+                const delay = Math.random() * 10; 
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${leftPos}vw`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                container.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // 2. SCRATCH CARD LOGIC
+        window.addEventListener('load', () => {
+            const canvas = document.getElementById('scratch-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size to match its container exactly
+            const container = canvas.parentElement;
+            canvas.width = container.offsetWidth;
+            canvas.height = container.offsetHeight;
+
+            // Fill canvas with "Gold" Style
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, '#cca352');
+            gradient.addColorStop(0.5, '#e6c875');
+            gradient.addColorStop(1, '#cca352');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add text to the scratch layer
+            ctx.font = "bold 40px 'Playfair Display'";
+            ctx.fillStyle = "#5c4314";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText("SCRATCH HERE ♡", canvas.width / 2, canvas.height / 2);
+
+            // Scratching setup
+            let isDrawing = false;
+
+            function getCoordinates(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: clientX - rect.left,
+                    y: clientY - rect.top
+                };
+            }
+
+            function scratch(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
+                
+                const pos = getCoordinates(e);
+                
+                // Erase the gold layer
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 40, 0, Math.PI * 2); // 40 is brush size
+                ctx.fill();
+            }
+
+            // Check if enough is scratched to click the button
+            function checkScratchCompletion() {
+                isDrawing = false;
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+                let transparentPixels = 0;
+                for (let i = 3; i < imageData.length; i += 4) {
+                    if (imageData[i] === 0) transparentPixels++;
+                }
+                const clearPercentage = (transparentPixels / (canvas.width * canvas.height)) * 100;
+                
+                // If more than 30% is scratched, remove the canvas barrier!
+                if (clearPercentage > 30) {
+                    canvas.style.pointerEvents = "none";
+                    canvas.style.transition = "opacity 0.8s ease";
+                    canvas.style.opacity = "0";
+                }
+            }
+
+            // Mouse Events
+            canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+            canvas.addEventListener('mousemove', scratch);
+            window.addEventListener('mouseup', checkScratchCompletion);
+
+            // Touch Events (For Mobile)
+            canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); });
+            canvas.addEventListener('touchmove', scratch);
+            window.addEventListener('touchend', checkScratchCompletion);
+            
+            // Handle window resize to keep canvas size accurate
+            window.addEventListener('resize', () => {
+               // Note: Resizing clears the canvas in HTML5, so we prevent full redraws 
+               // here to keep the scratched state, but in a production app you might handle this differently.
+            });
+        });
+
+const song = document.getElementById('birthday-song');
+const musicBtn = document.getElementById('music-btn');
+
+// 1. Function to Play/Pause manually
+function toggleMusic() {
+    if (song.paused) {
+        song.play();
+        musicBtn.innerHTML = '<span class="music-icon-bg">⏸️</span><span id="music-text">Pause Song</span>';
+    } else {
+        song.pause();
+        musicBtn.innerHTML = '<span class="music-icon-bg">🎵</span><span id="music-text">Play Song</span>';
+    }
+}
+
+// 2. The "Automatic" Trick
+document.addEventListener('click', function() {
+    if (song.paused) {
+        song.play();
+        musicBtn.innerHTML = '<span class="music-icon-bg">⏸️</span><span id="music-text">Pause Song</span>';
+    }
+}, { once: true });
+
+    </script>
+</body>
+</html>
