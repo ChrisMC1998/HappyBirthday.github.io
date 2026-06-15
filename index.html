@@ -6,84 +6,8 @@
     <title>Happy Birthday, Peaches</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <style>
-
-/* --- Hero Side Hearts (DENSE BALLOON STACKS) --- */
-        .side-hearts {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 150px; /* Wider container for a thicker bunch */
-            height: 75vh; 
-            z-index: 0;
-        }
-
-        .side-hearts.left { left: 10px; }
-        .side-hearts.right { right: 10px; }
-
-        .side-hearts span {
-            position: absolute;
-            animation: gentlePulse 4s infinite ease-in-out;
-        }
-
-        /* Deeper shadows to make them look like they are physically overlapping */
-        .pink-heart { color: var(--glow-pink); text-shadow: -3px 6px 12px rgba(0,0,0,0.6); } 
-        .white-heart { color: #ffffff; text-shadow: -2px 4px 8px rgba(0,0,0,0.5); filter: drop-shadow(0 0 5px rgba(255, 77, 133, 0.5)); } 
-
-        /* MASSIVE LEFT CLUSTER: 20 overlapping hearts */
-        .side-hearts.left span:nth-child(1) { top: -2%; left: 0%; font-size: 4rem; transform: rotate(-10deg); z-index: 3; }
-        .side-hearts.left span:nth-child(2) { top: 3%; left: 40%; font-size: 2.5rem; transform: rotate(15deg); z-index: 1; }
-        .side-hearts.left span:nth-child(3) { top: 8%; left: -10%; font-size: 5.5rem; transform: rotate(-5deg); z-index: 5; }
-        .side-hearts.left span:nth-child(4) { top: 13%; left: 35%; font-size: 3.5rem; transform: rotate(25deg); z-index: 2; }
-        .side-hearts.left span:nth-child(5) { top: 18%; left: 10%; font-size: 4.5rem; transform: rotate(-15deg); z-index: 4; }
-        .side-hearts.left span:nth-child(6) { top: 22%; left: -5%; font-size: 6rem; transform: rotate(-20deg); z-index: 6; }
-        .side-hearts.left span:nth-child(7) { top: 28%; left: 45%; font-size: 3rem; transform: rotate(10deg); z-index: 2; }
-        .side-hearts.left span:nth-child(8) { top: 33%; left: 5%; font-size: 5rem; transform: rotate(5deg); z-index: 5; }
-        .side-hearts.left span:nth-child(9) { top: 38%; left: -15%; font-size: 4rem; transform: rotate(-25deg); z-index: 3; }
-        .side-hearts.left span:nth-child(10) { top: 43%; left: 30%; font-size: 6.5rem; transform: rotate(15deg); z-index: 7; }
-        .side-hearts.left span:nth-child(11) { top: 48%; left: -5%; font-size: 3.5rem; transform: rotate(-10deg); z-index: 4; }
-        .side-hearts.left span:nth-child(12) { top: 53%; left: 40%; font-size: 5rem; transform: rotate(20deg); z-index: 6; }
-        .side-hearts.left span:nth-child(13) { top: 58%; left: 10%; font-size: 4.5rem; transform: rotate(-5deg); z-index: 5; }
-        .side-hearts.left span:nth-child(14) { top: 63%; left: -10%; font-size: 6rem; transform: rotate(-15deg); z-index: 8; }
-        .side-hearts.left span:nth-child(15) { top: 68%; left: 35%; font-size: 3rem; transform: rotate(25deg); z-index: 3; }
-        .side-hearts.left span:nth-child(16) { top: 73%; left: 0%; font-size: 5.5rem; transform: rotate(-20deg); z-index: 6; }
-        .side-hearts.left span:nth-child(17) { top: 78%; left: -15%; font-size: 4rem; transform: rotate(-5deg); z-index: 4; }
-        .side-hearts.left span:nth-child(18) { top: 83%; left: 45%; font-size: 2.5rem; transform: rotate(15deg); z-index: 2; }
-        .side-hearts.left span:nth-child(19) { top: 88%; left: 5%; font-size: 6.5rem; transform: rotate(5deg); z-index: 7; }
-        .side-hearts.left span:nth-child(20) { top: 95%; left: 25%; font-size: 3.5rem; transform: rotate(-10deg); z-index: 5; }
-
-        /* MASSIVE RIGHT CLUSTER: Mirrored tight overlap */
-        .side-hearts.right span:nth-child(1) { top: -2%; right: 0%; font-size: 4rem; transform: rotate(10deg); z-index: 3; }
-        .side-hearts.right span:nth-child(2) { top: 3%; right: 40%; font-size: 2.5rem; transform: rotate(-15deg); z-index: 1; }
-        .side-hearts.right span:nth-child(3) { top: 8%; right: -10%; font-size: 5.5rem; transform: rotate(5deg); z-index: 5; }
-        .side-hearts.right span:nth-child(4) { top: 13%; right: 35%; font-size: 3.5rem; transform: rotate(-25deg); z-index: 2; }
-        .side-hearts.right span:nth-child(5) { top: 18%; right: 10%; font-size: 4.5rem; transform: rotate(15deg); z-index: 4; }
-        .side-hearts.right span:nth-child(6) { top: 22%; right: -5%; font-size: 6rem; transform: rotate(20deg); z-index: 6; }
-        .side-hearts.right span:nth-child(7) { top: 28%; right: 45%; font-size: 3rem; transform: rotate(-10deg); z-index: 2; }
-        .side-hearts.right span:nth-child(8) { top: 33%; right: 5%; font-size: 5rem; transform: rotate(-5deg); z-index: 5; }
-        .side-hearts.right span:nth-child(9) { top: 38%; right: -15%; font-size: 4rem; transform: rotate(25deg); z-index: 3; }
-        .side-hearts.right span:nth-child(10) { top: 43%; right: 30%; font-size: 6.5rem; transform: rotate(-15deg); z-index: 7; }
-        .side-hearts.right span:nth-child(11) { top: 48%; right: -5%; font-size: 3.5rem; transform: rotate(10deg); z-index: 4; }
-        .side-hearts.right span:nth-child(12) { top: 53%; right: 40%; font-size: 5rem; transform: rotate(-20deg); z-index: 6; }
-        .side-hearts.right span:nth-child(13) { top: 58%; right: 10%; font-size: 4.5rem; transform: rotate(5deg); z-index: 5; }
-        .side-hearts.right span:nth-child(14) { top: 63%; right: -10%; font-size: 6rem; transform: rotate(15deg); z-index: 8; }
-        .side-hearts.right span:nth-child(15) { top: 68%; right: 35%; font-size: 3rem; transform: rotate(-25deg); z-index: 3; }
-        .side-hearts.right span:nth-child(16) { top: 73%; right: 0%; font-size: 5.5rem; transform: rotate(20deg); z-index: 6; }
-        .side-hearts.right span:nth-child(17) { top: 78%; right: -15%; font-size: 4rem; transform: rotate(5deg); z-index: 4; }
-        .side-hearts.right span:nth-child(18) { top: 83%; right: 45%; font-size: 2.5rem; transform: rotate(-15deg); z-index: 2; }
-        .side-hearts.right span:nth-child(19) { top: 88%; right: 5%; font-size: 6.5rem; transform: rotate(-5deg); z-index: 7; }
-        .side-hearts.right span:nth-child(20) { top: 95%; right: 25%; font-size: 3.5rem; transform: rotate(10deg); z-index: 5; }
-
-        /* Staggered glow animation */
-        .side-hearts span:nth-child(even) { animation-delay: 1.5s; }
-        .side-hearts span:nth-child(3n) { animation-delay: 3s; }
-
-        @keyframes gentlePulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        /* --- CSS STYLES --- */
+<style>
+        /* --- CSS STYLES & VARIABLES --- */
         :root {
             --bg-dark: #0f050d;
             --text-light: #fbe5ed;
@@ -123,7 +47,6 @@
             justify-content: center;
             opacity: 0.5;
             animation: floatUp linear infinite;
-            /* Applies a soft, premium glow around the heart shape */
             filter: drop-shadow(0 0 8px rgba(255, 77, 133, 0.8));
         }
 
@@ -134,7 +57,6 @@
         }
 
         @keyframes floatUp {
-            /* Adds a gentle sway/rotation as they float */
             0% { transform: translateY(100vh) scale(0.5) rotate(-15deg); opacity: 0; }
             10% { opacity: 0.7; }
             90% { opacity: 0.7; }
@@ -155,7 +77,6 @@
             margin: 0 auto;
         }
 
-       
         /* Top Nav */
         .top-nav {
             position: absolute; top: 0; left: 0; width: 100%;
@@ -167,9 +88,9 @@
         .nav-brand {
             font-family: var(--font-cursive);
             font-size: 2.2rem;
-            color: #ffffff; /* White text for contrast */
-            -webkit-text-stroke: 1px #000000; /* Black outline for readability */
-            text-shadow: 0 0 15px var(--glow-pink); /* Soft pink glow behind it */
+            color: #ffffff;
+            -webkit-text-stroke: 1px #000000;
+            text-shadow: 0 0 15px var(--glow-pink);
             display: flex;
             align-items: center;
             gap: 12px;
@@ -179,7 +100,7 @@
         .nav-brand::before, .nav-brand::after {
             content: '✨';
             font-size: 1.2rem;
-            -webkit-text-stroke: 0; /* Keeps the stars looking normal */
+            -webkit-text-stroke: 0;
             filter: drop-shadow(0 0 5px var(--accent-gold));
         }
 
@@ -187,7 +108,7 @@
             background: rgba(255, 77, 133, 0.1);
             border: 1px solid var(--glow-pink);
             color: var(--text-light);
-            padding: 8px 18px 8px 8px; /* Extra padding on right, less on left for the icon */
+            padding: 8px 18px 8px 8px;
             border-radius: 40px;
             font-family: var(--font-sans);
             font-size: 0.95rem;
@@ -269,6 +190,79 @@
             box-shadow: 0 0 30px rgba(255, 77, 133, 0.8), inset 0 0 20px rgba(255, 77, 133, 0.8);
         }
 
+        /* --- Hero Side Hearts (DENSE BALLOON STACKS) --- */
+        .side-hearts {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px; 
+            height: 75vh; 
+            z-index: 0;
+        }
+
+        .side-hearts.left { left: 10px; }
+        .side-hearts.right { right: 10px; }
+
+        .side-hearts span {
+            position: absolute;
+            animation: gentlePulse 4s infinite ease-in-out;
+        }
+
+        .pink-heart { color: var(--glow-pink); text-shadow: -3px 6px 12px rgba(0,0,0,0.6); } 
+        .white-heart { color: #ffffff; text-shadow: -2px 4px 8px rgba(0,0,0,0.5); filter: drop-shadow(0 0 5px rgba(255, 77, 133, 0.5)); } 
+
+        /* LEFT CLUSTER */
+        .side-hearts.left span:nth-child(1) { top: -2%; left: 0%; font-size: 4rem; transform: rotate(-10deg); z-index: 3; }
+        .side-hearts.left span:nth-child(2) { top: 3%; left: 40%; font-size: 2.5rem; transform: rotate(15deg); z-index: 1; }
+        .side-hearts.left span:nth-child(3) { top: 8%; left: -10%; font-size: 5.5rem; transform: rotate(-5deg); z-index: 5; }
+        .side-hearts.left span:nth-child(4) { top: 13%; left: 35%; font-size: 3.5rem; transform: rotate(25deg); z-index: 2; }
+        .side-hearts.left span:nth-child(5) { top: 18%; left: 10%; font-size: 4.5rem; transform: rotate(-15deg); z-index: 4; }
+        .side-hearts.left span:nth-child(6) { top: 22%; left: -5%; font-size: 6rem; transform: rotate(-20deg); z-index: 6; }
+        .side-hearts.left span:nth-child(7) { top: 28%; left: 45%; font-size: 3rem; transform: rotate(10deg); z-index: 2; }
+        .side-hearts.left span:nth-child(8) { top: 33%; left: 5%; font-size: 5rem; transform: rotate(5deg); z-index: 5; }
+        .side-hearts.left span:nth-child(9) { top: 38%; left: -15%; font-size: 4rem; transform: rotate(-25deg); z-index: 3; }
+        .side-hearts.left span:nth-child(10) { top: 43%; left: 30%; font-size: 6.5rem; transform: rotate(15deg); z-index: 7; }
+        .side-hearts.left span:nth-child(11) { top: 48%; left: -5%; font-size: 3.5rem; transform: rotate(-10deg); z-index: 4; }
+        .side-hearts.left span:nth-child(12) { top: 53%; left: 40%; font-size: 5rem; transform: rotate(20deg); z-index: 6; }
+        .side-hearts.left span:nth-child(13) { top: 58%; left: 10%; font-size: 4.5rem; transform: rotate(-5deg); z-index: 5; }
+        .side-hearts.left span:nth-child(14) { top: 63%; left: -10%; font-size: 6rem; transform: rotate(-15deg); z-index: 8; }
+        .side-hearts.left span:nth-child(15) { top: 68%; left: 35%; font-size: 3rem; transform: rotate(25deg); z-index: 3; }
+        .side-hearts.left span:nth-child(16) { top: 73%; left: 0%; font-size: 5.5rem; transform: rotate(-20deg); z-index: 6; }
+        .side-hearts.left span:nth-child(17) { top: 78%; left: -15%; font-size: 4rem; transform: rotate(-5deg); z-index: 4; }
+        .side-hearts.left span:nth-child(18) { top: 83%; left: 45%; font-size: 2.5rem; transform: rotate(15deg); z-index: 2; }
+        .side-hearts.left span:nth-child(19) { top: 88%; left: 5%; font-size: 6.5rem; transform: rotate(5deg); z-index: 7; }
+        .side-hearts.left span:nth-child(20) { top: 95%; left: 25%; font-size: 3.5rem; transform: rotate(-10deg); z-index: 5; }
+
+        /* RIGHT CLUSTER */
+        .side-hearts.right span:nth-child(1) { top: -2%; right: 0%; font-size: 4rem; transform: rotate(10deg); z-index: 3; }
+        .side-hearts.right span:nth-child(2) { top: 3%; right: 40%; font-size: 2.5rem; transform: rotate(-15deg); z-index: 1; }
+        .side-hearts.right span:nth-child(3) { top: 8%; right: -10%; font-size: 5.5rem; transform: rotate(5deg); z-index: 5; }
+        .side-hearts.right span:nth-child(4) { top: 13%; right: 35%; font-size: 3.5rem; transform: rotate(-25deg); z-index: 2; }
+        .side-hearts.right span:nth-child(5) { top: 18%; right: 10%; font-size: 4.5rem; transform: rotate(15deg); z-index: 4; }
+        .side-hearts.right span:nth-child(6) { top: 22%; right: -5%; font-size: 6rem; transform: rotate(20deg); z-index: 6; }
+        .side-hearts.right span:nth-child(7) { top: 28%; right: 45%; font-size: 3rem; transform: rotate(-10deg); z-index: 2; }
+        .side-hearts.right span:nth-child(8) { top: 33%; right: 5%; font-size: 5rem; transform: rotate(-5deg); z-index: 5; }
+        .side-hearts.right span:nth-child(9) { top: 38%; right: -15%; font-size: 4rem; transform: rotate(25deg); z-index: 3; }
+        .side-hearts.right span:nth-child(10) { top: 43%; right: 30%; font-size: 6.5rem; transform: rotate(-15deg); z-index: 7; }
+        .side-hearts.right span:nth-child(11) { top: 48%; right: -5%; font-size: 3.5rem; transform: rotate(10deg); z-index: 4; }
+        .side-hearts.right span:nth-child(12) { top: 53%; right: 40%; font-size: 5rem; transform: rotate(-20deg); z-index: 6; }
+        .side-hearts.right span:nth-child(13) { top: 58%; right: 10%; font-size: 4.5rem; transform: rotate(5deg); z-index: 5; }
+        .side-hearts.right span:nth-child(14) { top: 63%; right: -10%; font-size: 6rem; transform: rotate(15deg); z-index: 8; }
+        .side-hearts.right span:nth-child(15) { top: 68%; right: 35%; font-size: 3rem; transform: rotate(-25deg); z-index: 3; }
+        .side-hearts.right span:nth-child(16) { top: 73%; right: 0%; font-size: 5.5rem; transform: rotate(20deg); z-index: 6; }
+        .side-hearts.right span:nth-child(17) { top: 78%; right: -15%; font-size: 4rem; transform: rotate(5deg); z-index: 4; }
+        .side-hearts.right span:nth-child(18) { top: 83%; right: 45%; font-size: 2.5rem; transform: rotate(-15deg); z-index: 2; }
+        .side-hearts.right span:nth-child(19) { top: 88%; right: 5%; font-size: 6.5rem; transform: rotate(-5deg); z-index: 7; }
+        .side-hearts.right span:nth-child(20) { top: 95%; right: 25%; font-size: 3.5rem; transform: rotate(10deg); z-index: 5; }
+
+        .side-hearts span:nth-child(even) { animation-delay: 1.5s; }
+        .side-hearts span:nth-child(3n) { animation-delay: 3s; }
+
+        @keyframes gentlePulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
         /* Section Headers */
         .badge {
             display: inline-block; border: 1px solid var(--accent-gold);
@@ -328,10 +322,9 @@
         .grid-item p { font-size: 0.9rem; color: #eed5df; line-height: 1.6; }
 
         .quote-box {
-            margin: 120px auto 100px; /* Pushes the whole box down so it stays away from the grid */
-            max-width: 800px; /* Made slightly wider */
+            margin: 120px auto 100px; 
+            max-width: 800px; 
             border: 1px solid rgba(226, 169, 105, 0.4); 
-            /* Top padding, massive right padding (250px), bottom padding, left padding */
             padding: 40px 250px 40px 40px; 
             border-radius: 15px; 
             font-family: var(--font-serif); 
@@ -346,9 +339,9 @@
         /* --- NEW POLAROID STYLES --- */
         .polaroid-card {
             position: absolute;
-            right: -20px; /* Keeps it closer to the edge so it doesn't break screens */
-            top: -50px; /* Anchors it to the top so it hangs down, instead of shooting up */
-            width: 250px; /* Slightly narrower to fit perfectly */
+            right: -20px; 
+            top: -50px; 
+            width: 250px; 
             background: #e8dcc6; 
             padding: 15px 15px 25px 15px;
             border-radius: 3px;
@@ -359,7 +352,7 @@
 
         .polaroid-img {
             width: 100%;
-            height: 220px; /* Restricts the photo height so it doesn't get too massive */
+            height: 220px; 
             object-fit: cover;
             border-radius: 2px;
             filter: sepia(20%) contrast(110%); 
@@ -381,7 +374,7 @@
             transform: translateX(-50%) rotate(-2deg);
             width: 90px;
             height: 30px;
-            background: rgba(200, 180, 140, 0.7); /* Semi-transparent masking tape */
+            background: rgba(200, 180, 140, 0.7); 
             box-shadow: 0 1px 3px rgba(0,0,0,0.3);
             z-index: 6;
         }
@@ -392,7 +385,7 @@
             margin-top: 50px;
         }
         .letter-paper {
-            flex: 1; max-width: 500px; background: #e8dcc6; /* Parchment color */
+            flex: 1; max-width: 500px; background: #e8dcc6; 
             color: #3e2723; padding: 50px 40px; border-radius: 5px;
             box-shadow: 5px 10px 30px rgba(0,0,0,0.8);
             font-family: 'Great Vibes', cursive; font-size: 1.8rem; line-height: 1.6;
@@ -432,40 +425,35 @@
             z-index: 2; cursor: pointer;
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .hero-name { font-size: 3.5rem; }
-            .timeline-item { flex-direction: column; padding-left: 0; text-align: center; }
-            .timeline::before { display: none; }
-            .circle-number { position: relative; left: 0; margin: 0 auto 20px; }
-            .journey-img { width: 100%; }
-            .letter-layout { flex-direction: column; align-items: center; }
-            .letter-paper { transform: none; width: 100%; padding: 30px 20px; }
-            .scratch-container { height: 250px; }
-        }
-
-/* =========================================
-           MOBILE RESPONSIVENESS (MUST BE AT BOTTOM)
+        /* =========================================
+           MASTER MOBILE RESPONSIVENESS FIX
            ========================================= */
         @media (max-width: 768px) {
-            /* 1. Fix Top Nav */
-            .top-nav { flex-direction: column; padding: 15px; gap: 15px; text-align: center; }
+            /* Fix Top Nav Alignment */
+            .top-nav { 
+                flex-direction: column; 
+                padding: 15px; 
+                gap: 15px; 
+                justify-content: center;
+                align-items: center;
+            }
+            .nav-brand { justify-content: center; }
             
-            /* 2. Hide massive side balloons so they don't crush the text */
+            /* Hide massive side balloons so they don't crush the text */
             .side-hearts { display: none !important; }
             
-            /* 3. Shrink Hero image and text so it fits the screen */
+            /* Shrink Hero image and text so it fits the screen */
             .glowing-heart-container { width: 250px; height: 250px; margin-top: 80px; }
-            .hero-title { font-size: 2rem; }
-            .hero-name { font-size: 3.2rem; }
-            .hero-subtitle { font-size: 2.5rem; margin-top: 0; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-name { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 3rem; margin-top: 0; }
             
-            /* 4. Fix Timeline squishing */
-            .timeline-item { flex-direction: column; padding-left: 0; gap: 20px; }
+            /* Fix Timeline squishing */
+            .timeline-item { flex-direction: column; padding-left: 0; text-align: center; gap: 20px; }
             .timeline::before { display: none; }
             .circle-number { position: relative; left: 0; margin: 0 auto; }
             
-            /* 5. Fix the massive Quote Box padding & floating Polaroid */
+            /* Fix the massive Quote Box padding & floating Polaroid */
             .quote-box { 
                 padding: 30px !important; 
                 margin: 40px 15px !important; 
@@ -479,16 +467,16 @@
                 transform: rotate(2deg) !important; 
             }
             
-            /* 6. Fix Letter Layout overlapping */
+            /* Fix Letter Layout overlapping */
             .letter-layout { flex-direction: column; align-items: center; }
             .letter-paper { transform: none; width: 100%; padding: 30px 20px; }
             
-            /* 7. Fix Scratch Card overflowing the screen */
+            /* Fix Scratch Card overflowing the screen */
             .scratch-container { width: 100%; height: 250px; margin: 20px 0; }
             .scratch-prize h3 { font-size: 2.5rem; }
         }
-
     </style>
+
 </head>
 <body>
 
