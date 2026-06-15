@@ -83,23 +83,6 @@
             50% { opacity: 1; }
         }
 
-@media (max-width: 768px) {
-            /* ... other mobile rules remain ... */
-            
-            .quote-box {
-                text-align: center;
-                margin-bottom: 40px;
-                padding: 30px; /* Resets the massive right-padding for phones */
-            }
-            .polaroid-card {
-                position: relative;
-                right: auto;
-                top: auto; /* Ensure we reset the top anchor for mobile */
-                margin: 40px auto 0;
-                transform: rotate(3deg);
-            }
-        }
-
         /* --- CSS STYLES --- */
         :root {
             --bg-dark: #0f050d;
@@ -460,6 +443,51 @@
             .letter-paper { transform: none; width: 100%; padding: 30px 20px; }
             .scratch-container { height: 250px; }
         }
+
+/* =========================================
+           MOBILE RESPONSIVENESS (MUST BE AT BOTTOM)
+           ========================================= */
+        @media (max-width: 768px) {
+            /* 1. Fix Top Nav */
+            .top-nav { flex-direction: column; padding: 15px; gap: 15px; text-align: center; }
+            
+            /* 2. Hide massive side balloons so they don't crush the text */
+            .side-hearts { display: none !important; }
+            
+            /* 3. Shrink Hero image and text so it fits the screen */
+            .glowing-heart-container { width: 250px; height: 250px; margin-top: 80px; }
+            .hero-title { font-size: 2rem; }
+            .hero-name { font-size: 3.2rem; }
+            .hero-subtitle { font-size: 2.5rem; margin-top: 0; }
+            
+            /* 4. Fix Timeline squishing */
+            .timeline-item { flex-direction: column; padding-left: 0; gap: 20px; }
+            .timeline::before { display: none; }
+            .circle-number { position: relative; left: 0; margin: 0 auto; }
+            
+            /* 5. Fix the massive Quote Box padding & floating Polaroid */
+            .quote-box { 
+                padding: 30px !important; 
+                margin: 40px 15px !important; 
+                text-align: center; 
+            }
+            .polaroid-card { 
+                position: relative !important; 
+                right: auto !important; 
+                top: auto !important; 
+                margin: 30px auto 0 !important; 
+                transform: rotate(2deg) !important; 
+            }
+            
+            /* 6. Fix Letter Layout overlapping */
+            .letter-layout { flex-direction: column; align-items: center; }
+            .letter-paper { transform: none; width: 100%; padding: 30px 20px; }
+            
+            /* 7. Fix Scratch Card overflowing the screen */
+            .scratch-container { width: 100%; height: 250px; margin: 20px 0; }
+            .scratch-prize h3 { font-size: 2.5rem; }
+        }
+
     </style>
 </head>
 <body>
